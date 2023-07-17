@@ -1,6 +1,6 @@
 # Chat Robot
 
-该应用基于hobot_audio、hobot_gpt和hobot_tts实现一个聊天机器人。
+**chat_robot**基于hobot_audio、hobot_gpt和hobot_tts实现一个聊天机器人。
 
 运行方式：
 
@@ -10,7 +10,7 @@
    cp -r /opt/tros/lib/hobot_audio/config/ .
    ```
 
-   修改 config/audio_config.json，`asr_mode`字段为`2`
+   修改 config/audio_config.json，`asr_mode`字段为`1`
 
    ```bash
    bash config/audio.sh
@@ -38,5 +38,11 @@
 
    ```bash
    source /opt/tros/setup.bash
+
+   # 屏蔽调式打印信息
+   export GLOG_minloglevel=1
+
    ros2 launch chat_robot chat_robot.launch.py
    ```
+
+   程序运行成功后，先使用唤醒词“地平线你好”唤醒机器人，紧接着说话，然后等待机器人语音回答。
