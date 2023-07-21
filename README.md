@@ -1,6 +1,6 @@
 # 功能介绍
 
-智能语音聊天机器人由智能语音，GPT交互和文本转语音组成，实现人和机器人语音聊天功能。
+智能语音聊天机器人识别用户语音内容，然后调用OpenAI API获取答复，最后将该答复播放出来，实现用户和机器人语音聊天功能。
 
 # 物料清单
 
@@ -41,7 +41,7 @@ sudo apt install -y tros-chat-robot
 1. 拷贝配置文件和加载音频驱动
 
     ```shell
-    # 从tros.b的安装路径中拷贝出运行示例需要的配置文件，若已拷贝过则可忽略
+    # 从tros.b的安装路径中拷贝出运行示例需要的配置文件，若已拷贝则可忽略
     cp -r /opt/tros/lib/hobot_audio/config/ .
     cp -r /opt/tros/lib/hobot_gpt/config ./
 
@@ -52,7 +52,7 @@ sudo apt install -y tros-chat-robot
     注意：加载音频驱动时确保无其他音频设备连接，例如USB麦克风或带麦克风功能的USB摄像头，否则会导致应用打开音频设备失败，报错退出。
 
 2. 修改配置文件，只需修改一次
-   1. 修改 *config/audio_config.json*，`asr_mode`字段为1。
+   1. 修改 *config/audio_config.json*，将`asr_mode`字段为1。
    2. 修改 *config/gpt_config.json*，将`api_key`字段设置为自己的OpenAI API key。
 
 3. 下载TTS模型
@@ -76,11 +76,17 @@ sudo apt install -y tros-chat-robot
     ros2 launch chat_robot chat_robot.launch.py
     ```
 
-    启动成功后，用户先使用唤醒词“地平线你好”唤醒机器人，然后紧接着和机器人聊天，片刻之后机器人语音应答。
+    启动成功后，用户先使用唤醒词“地平线你好”唤醒机器人，然后紧接着和机器人聊天，片刻之后机器人语音应答。每次和机器人聊天前，都要先使用唤醒词“地平线你好”唤醒机器人。
 
-# 原理简介
+# 接口说明
 
-智能语音hobot_audio package开始运行之后，会从麦克风阵列采集音频，并且将采集到的音频数据送入语音智能算法SDK模块做智能处理，输出唤醒事件、命令词、ASR结果等智能信息，其中唤醒事件、命令词通过`audio_msg::msg::SmartAudioData`类型消息发布，ASR结果通过`std_msgs::msg::String`类型消息发布。
+## 话题
+
+| 名称         | 消息类型                                                                                                               | 说明                       |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| /audio_smart | [audio_msg/msg/SmartAudioData](https://github.com/HorizonRDK/hobot_msgs/blob/develop/audio_msg/msg/SmartAudioData.msg) | 发布智能语音处理的智能结果 |
+| /audio_asr   | std_msgs/msg/String                                                                                                    | 发布ASR识别结果            |
+| /tts_text    | std_msgs/msg/String                                                                                                    | 发布GPT回答结果            |
 
 # 常见问题
 
