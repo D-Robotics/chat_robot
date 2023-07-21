@@ -19,7 +19,7 @@
 - 已拥有OpenAI API key，并可正常访问OpenAI API。
 - 音频板正确连接到RDK X3，耳机接口接上耳机或音响
 
-连接步骤：
+## 机器人组装
 
 1. 将麦克风板连接到地平线RDK X3 40PIN GPIO 接口上，连接后实物如下图：
 
@@ -76,7 +76,7 @@ sudo apt install -y tros-chat-robot
     ros2 launch chat_robot chat_robot.launch.py
     ```
 
-    启动成功后，用户先使用唤醒词“地平线你好”唤醒机器人，然后紧接着和机器人聊天，片刻之后机器人语音应答。每次和机器人聊天前，都要先使用唤醒词“地平线你好”唤醒机器人。
+    启动成功后，用户先使用唤醒词“地平线你好”唤醒机器人，然后紧接着和机器人聊天，片刻之后机器人语音应答。每次和机器人聊天，都要先使用唤醒词“地平线你好”唤醒机器人。
 
 # 接口说明
 
@@ -95,6 +95,6 @@ sudo apt install -y tros-chat-robot
 - 确认音频设备连接是否正常，并连接耳机或音响
 - 确认是否加载音频驱动
 - 确认加载音频驱动前是否已有音频设备连接
-- *config/audio_config.json*，`asr_mode`字段为`1`
-- 确认*config/gpt_config.json*，`api_key`字段设置正确
+- 确认 *config/audio_config.json*，`asr_mode`字段为`1`
+- 确认 *config/gpt_config.json*，`api_key`字段设置正确
 - 确认网络可访问OpenAI API
