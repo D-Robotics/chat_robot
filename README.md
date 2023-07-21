@@ -52,11 +52,11 @@ sudo apt install -y tros-chat-robot
     注意：加载音频驱动时确保无其他音频设备连接，例如USB麦克风或带麦克风功能的USB摄像头，否则会导致应用打开音频设备失败，报错退出。
 
 2. 修改配置文件，只需修改一次
-   1. 修改 *config/audio_config.json*，将`asr_mode`字段为1。
-   2. 修改 *config/gpt_config.json*，将`api_key`字段设置为自己的OpenAI API key。
+   1. 修改 *config/audio_config.json*，将`asr_mode`字段为`1`。
+   2. 修改 *config/gpt_config.json*，将`api_key`字段设置为可用的OpenAI API key。
 
 3. 下载TTS模型
-    首次运行需要下载模型文件并解压，详细命令如下：
+    首次运行需要下载TTS模型文件并解压，详细命令如下：
 
     ```bash
     wget http://archive.sunrisepi.tech//tts-model/tts_model.tar.gz
@@ -76,7 +76,7 @@ sudo apt install -y tros-chat-robot
     ros2 launch chat_robot chat_robot.launch.py
     ```
 
-    启动成功后，用户先使用唤醒词“地平线你好”唤醒机器人，然后紧接着和机器人聊天，片刻之后机器人语音应答。每次和机器人聊天，都要先使用唤醒词“地平线你好”唤醒机器人。
+    启动成功后，用户使用唤醒词“地平线你好”唤醒机器人，然后紧接着和机器人聊天，片刻之后机器人语音应答。每次和机器人聊天，都要先使用唤醒词“地平线你好”唤醒机器人。
 
 # 接口说明
 
