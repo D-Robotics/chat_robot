@@ -95,6 +95,6 @@ sudo apt install -y tros-chat-robot
 - 确认音频设备连接是否正常，并连接耳机或音响
 - 确认是否加载音频驱动
 - 确认加载音频驱动前是否已有音频设备连接
-- 确认 *config/audio_config.json*，`asr_mode`字段为`1`
-- 确认 *config/gpt_config.json*，`api_key`字段设置正确
+- 确认 *config/audio_config.json* `asr_mode`字段为`1`
+- 确认 *config/gpt_config.json* `api_key`字段设置正确
 - 确认网络可访问OpenAI API
