@@ -49,8 +49,7 @@ sudo apt install -y tros-chat-robot
 
     # Load the audio driver, only need to load once after device startup
     bash config/audio.sh
-    ```Please translate the Chinese content in the following text into English, keeping the original format and content:
-
+    ```
 Note: Ensure no other audio devices are connected when loading the audio driver, such as USB microphones or USB cameras with microphone functions, as this may cause the application to fail to open the audio device and report an error and exit.
 
 2. Modify the configuration file, only need to modify once
